@@ -99,6 +99,7 @@ namespace <#= code.VsNamespaceSuggestion() #>
 using System.Collections.Generic;
 using System.Data.Objects;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace <#= code.VsNamespaceSuggestion() #>
