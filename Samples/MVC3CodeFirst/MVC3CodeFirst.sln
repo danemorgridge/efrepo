@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC3CodeFirst.Web", "MVC3CodeFirst.Web\MVC3CodeFirst.Web.csproj", "{E35FFA88-60E9-40B5-AD80-8988A4A2E5E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFRepository", "..\..\EFRepositoryBinary\EFRepository\EFRepository.csproj", "{4580BC98-A5C6-4171-A687-ECE04E91A6F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E35FFA88-60E9-40B5-AD80-8988A4A2E5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35FFA88-60E9-40B5-AD80-8988A4A2E5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35FFA88-60E9-40B5-AD80-8988A4A2E5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35FFA88-60E9-40B5-AD80-8988A4A2E5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
