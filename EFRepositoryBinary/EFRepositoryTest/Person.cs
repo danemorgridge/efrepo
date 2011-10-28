@@ -11,14 +11,12 @@ namespace EFRepositoryTest
 		[Key]
 		public int PersonId { get; set; }
 
-		[MaxLength(50)]
+		[StringLength(50)]
 		[Required]
-		[Unicode(false)]
 		public string FirstName { get; set; }
-		
-		[MaxLength(50)]
+
+		[StringLength(50)]
 		[Required]
-		[Unicode(false)]
 		public string LastName { get; set; }
 
 		[Required]

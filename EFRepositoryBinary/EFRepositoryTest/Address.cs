@@ -11,19 +11,19 @@ namespace EFRepositoryTest
 		[Key]
 		public int AddressId { get; set; }
 
-		[MaxLength(50)]
+		[StringLength(50)]
 		[Required]
 		public string Street { get; set; }
 
-		[MaxLength(50)]
+		[StringLength(50)]
 		[Required]
 		public string City { get; set; }
 
-		[MaxLength(50)]
+		[StringLength(50)]
 		[Required]
 		public string State { get; set; }
 
-		[MaxLength(50)]
+		[StringLength(50)]
 		[Required]
 		public string Zip { get; set; }
 
