@@ -193,7 +193,10 @@ namespace <#= code.VsNamespaceSuggestion() #>
 
 		public static <#=code.Escape(entity)#>Repository Get<#=code.Escape(entity)#>Repository()
 		{
-			return new <#=code.Escape(entity)#>Repository();
+			var repository = new <#=code.Escape(entity)#>Repository();
+			repository.UnitOfWork = GetUnitOfWork();
+			return repository;
+
 		}
 
 		public static <#=code.Escape(entity)#>Repository Get<#=code.Escape(entity)#>Repository(IUnitOfWork unitOfWork)
