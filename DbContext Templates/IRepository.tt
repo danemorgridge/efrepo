@@ -49,7 +49,12 @@ using System.Collections.Generic;
 	
 namespace <#= code.VsNamespaceSuggestion() #>
 {   
-	<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>partial class <#=code.Escape(entity)#>Repository : EFRepository<<#=code.Escape(entity)#>>
+	<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> class <#=code.Escape(entity)#>Repository : EFRepository<<#=code.Escape(entity)#>>, I<#=code.Escape(entity)#>Repository
+	{
+
+	}
+
+	<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> interface I<#=code.Escape(entity)#>Repository : IRepository<<#=code.Escape(entity)#>>
 	{
 
 	}
