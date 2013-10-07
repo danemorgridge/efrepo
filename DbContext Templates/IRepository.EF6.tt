@@ -1,0 +1,261 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+
+<#@ output extension=".cs"#>
+<#
+
+// This needs to be set to the .edmx file that you want to process.
+string edmxFile = FindEDMXFileName(); // @"Model1.edmx";
+
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+MetadataTools ef = new MetadataTools(this);
+
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+
+namespace <#= code.VsNamespaceSuggestion() #>
+{ 
+	public interface IRepository<T> 
+	{
+		IUnitOfWork UnitOfWork { get; set; }
+		IQueryable<T> All();
+		IQueryable<T> Where(Expression<Func<T, bool>> expression);
+		void Add(T entity);
+		void Delete(T entity);
+	}
+}<#
+
+
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(edmxFile);
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+{;
+
+	if(!DoesFileExist(entity.Name + "Repository.cs"))
+	{
+		fileManager.StartNewFile(entity.Name + "Repository.cs");
+		#>using System;
+using System.Linq;
+using System.Collections.Generic;
+	
+namespace <#= code.VsNamespaceSuggestion() #>
+{   
+	<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> class <#=code.Escape(entity)#>Repository : EFRepository<<#=code.Escape(entity)#>>, I<#=code.Escape(entity)#>Repository
+	{
+
+	}
+
+	<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> interface I<#=code.Escape(entity)#>Repository : IRepository<<#=code.Escape(entity)#>>
+	{
+
+	}
+}<#
+	}
+	else
+	{
+		fileManager.StartNewFile(entity.Name + "Repository.cs");
+		this.Write(OutputFile(entity.Name + "Repository.cs"));
+	}
+}
+
+fileManager.StartNewFile("IUnitOfWork.cs");
+#>using System.Data.Entity;
+
+namespace <#= code.VsNamespaceSuggestion() #>
+{
+	public interface IUnitOfWork
+	{
+		DbContext Context { get; set; }
+		void Commit();
+		bool LazyLoadingEnabled { get; set; }
+		bool ProxyCreationEnabled { get; set; }
+		string ConnectionString { get; set; }
+	}
+}<#	fileManager.StartNewFile("RepositoryIQueryableExtensions.cs");
+#>using System.Data.Entity.Core.Objects;
+using System.Linq;
+
+namespace <#= code.VsNamespaceSuggestion() #>
+{
+	public static class RepositoryIQueryableExtensions
+	{
+		public static IQueryable<T> Include<T>
+			(this IQueryable<T> source, string path)
+		{
+			var objectQuery = source as ObjectQuery<T>;
+			if (objectQuery != null)
+			{
+				return objectQuery.Include(path);
+			}
+			return source;
+		}
+	}
+}<# fileManager.StartNewFile("EFRepository.cs");
+#>using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace <#= code.VsNamespaceSuggestion() #>
+{
+	public class EFRepository<T> : IRepository<T> where T : class
+	{
+		public IUnitOfWork UnitOfWork { get; set; }
+		
+		private IDbSet<T> _objectset;
+		private IDbSet<T> ObjectSet
+		{
+			get
+			{
+				if (_objectset == null)
+				{
+					_objectset = UnitOfWork.Context.Set<T>();
+				}
+				return _objectset;
+			}
+		}
+
+		public virtual IQueryable<T> All()
+		{
+			return ObjectSet.AsQueryable();
+		}
+
+		public IQueryable<T> Where(Expression<Func<T, bool>> expression)
+		{
+			return ObjectSet.Where(expression);
+		}
+
+		public void Add(T entity)
+		{
+			ObjectSet.Add(entity);
+		}
+
+		public void Delete(T entity)
+		{
+			ObjectSet.Remove(entity);
+		}
+
+	}
+}<#fileManager.StartNewFile("EFUnitOfWork.cs");
+#>using System.Data.Entity;
+
+namespace <#= code.VsNamespaceSuggestion() #>
+{
+	public class EFUnitOfWork : IUnitOfWork
+	{
+		public DbContext Context { get; set; }
+
+		public EFUnitOfWork()
+		{
+			Context = new <#=code.Escape(container)#>();
+		}
+
+		public void Commit()
+		{
+			Context.SaveChanges();
+		}
+		
+		public bool LazyLoadingEnabled
+		{
+			get { return Context.Configuration.LazyLoadingEnabled; }
+			set { Context.Configuration.LazyLoadingEnabled = value; }
+		}
+
+		public bool ProxyCreationEnabled
+		{
+			get { return Context.Configuration.ProxyCreationEnabled; }
+			set { Context.Configuration.ProxyCreationEnabled = value; }
+		}
+		
+		public string ConnectionString
+		{
+			get { return Context.Database.Connection.ConnectionString; }
+			set { Context.Database.Connection.ConnectionString = value; }
+		}
+	}
+}
+<#fileManager.StartNewFile("RepositoryHelper.cs");
+#>
+namespace <#= code.VsNamespaceSuggestion() #>
+{
+	public static class RepositoryHelper
+	{
+		public static IUnitOfWork GetUnitOfWork()
+		{
+			return new EFUnitOfWork();
+		}		
+		<# foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+{; #>
+
+		public static <#=code.Escape(entity)#>Repository Get<#=code.Escape(entity)#>Repository()
+		{
+			var repository = new <#=code.Escape(entity)#>Repository();
+			repository.UnitOfWork = GetUnitOfWork();
+			return repository;
+		}
+
+		public static <#=code.Escape(entity)#>Repository Get<#=code.Escape(entity)#>Repository(IUnitOfWork unitOfWork)
+		{
+			var repository = new <#=code.Escape(entity)#>Repository();
+			repository.UnitOfWork = unitOfWork;
+			return repository;
+		}		
+<# } #>
+	}
+}<#	fileManager.Process();
+#>
+
+
+<#+
+
+bool DoesFileExist(string filename)
+{			
+	return File.Exists(Path.Combine(GetCurrentDirectory(),filename));	
+}
+
+string OutputFile(string filename)
+{
+	using(StreamReader sr = new StreamReader(Path.Combine(GetCurrentDirectory(),filename)))
+	{
+		string contents = sr.ReadToEnd();
+		return contents;
+	}
+}
+
+string GetCurrentDirectory()
+{
+	string executingDirectoryName = "";
+	string stackTraceFileName = new StackTrace(true).GetFrame(0).GetFileName();
+	if (String.IsNullOrEmpty(stackTraceFileName))
+	{
+		throw new ArgumentException("No value was specified for the 'directoryName' configuration parameter" +
+			", and we could not figure out the file name from the stack trace (most likely because of running " +
+			"the template with debug='False' specified in the <\u0023@ template \u0023> directive.");
+	}
+	else
+	{		
+		executingDirectoryName = Path.GetDirectoryName(stackTraceFileName);
+	}	
+	return executingDirectoryName;
+}
+
+string FindEDMXFileName()
+{
+	string edmxFile = "";
+				
+	string[] entityFrameworkFiles = Directory.GetFiles(GetCurrentDirectory(), "*.edmx");
+	if(entityFrameworkFiles.Length > 0)
+		edmxFile = entityFrameworkFiles[0];
+	
+	return edmxFile;
+}
+#>
