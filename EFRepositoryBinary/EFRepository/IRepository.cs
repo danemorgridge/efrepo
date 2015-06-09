@@ -12,6 +12,8 @@ namespace EFRepository
 		IQueryable<T> All();
 		IQueryable<T> Where(Expression<Func<T, bool>> expression);
 		void Add(T entity);
+		void Delete(int id);
+		T Get(int id);
 		void Delete(T entity);
 	}
 }
