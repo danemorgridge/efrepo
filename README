@@ -6,7 +6,7 @@ This file contains basic information on using this T4 Template and what is inclu
 
 Folder Structure:
 
--EFRepositoryBinary : Contains a binary only version that is for extension when using code first. Currently requires CTP5
+-EFRepositoryBinary : Contains a binary only version that is for extension when using code first. Currently requires EF6
 -IRepository.tt : Basic T4 Template with no Dependency Injection framework baked in
 -README : this file...
 
