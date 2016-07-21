@@ -1,15 +1,12 @@
-Entity Framework Repository & Unit of Work T4 Template
+Entity Framework Repository
 
 Author: Dane Morgridge (dane@projectsandbox.com)
 
-This file contains basic information on using this T4 Template and what is included
 
 Folder Structure:
 
 -EFRepositoryBinary : Contains a binary only version that is for extension when using code first. Currently requires EF6
--IRepository.tt : Basic T4 Template with no Dependency Injection framework baked in
 -README : this file...
-
 
 
 The best place to get information on this project are at the following location:
@@ -23,10 +20,9 @@ Dane Morgridge
 dane@projectsandbox.com
 
 
-
 Licensed under the MIT License
 
-Copyright (c) 2010 Dane Morgridge
+Copyright (c) 2016 Dane Morgridge
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
 and associated documentation files (the "Software"), to deal in the Software without restriction, 
