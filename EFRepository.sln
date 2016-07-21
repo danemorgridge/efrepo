@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFRepository", "EFRepositoryBinary\EFRepository\EFRepository.csproj", "{4580BC98-A5C6-4171-A687-ECE04E91A6F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFRepository", "EFRepository\EFRepository.csproj", "{4580BC98-A5C6-4171-A687-ECE04E91A6F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "T4 Templates", "T4 Templates", "{3C9A5FC8-4D0C-43E1-AA9D-C33538AAC891}"
+	ProjectSection(SolutionItems) = preProject
+		T4 Templates\IRepository.tt = T4 Templates\IRepository.tt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{02C48735-3777-46CC-893E-06C9316E6275}"
+	ProjectSection(SolutionItems) = preProject
+		EFRepository\EFRepository.nuspec = EFRepository\EFRepository.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

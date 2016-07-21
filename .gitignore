@@ -51,3 +51,4 @@ stylecop.*
 ~$*
 *.dbmdl
 *.vs
+packages
