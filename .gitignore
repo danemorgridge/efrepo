@@ -50,3 +50,5 @@ ClientBin
 stylecop.*
 ~$*
 *.dbmdl
+*.vs
+packages

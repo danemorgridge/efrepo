@@ -1,21 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binary", "Binary", "{D3B710B9-167E-4FCC-B58E-C9DA980168AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFRepository", "EFRepository\EFRepository.csproj", "{4580BC98-A5C6-4171-A687-ECE04E91A6F0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{F568F395-8127-4FA1-B93E-9D6B0A8A33EE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "T4 Templates", "T4 Templates", "{3C9A5FC8-4D0C-43E1-AA9D-C33538AAC891}"
+	ProjectSection(SolutionItems) = preProject
+		T4 Templates\IRepository.tt = T4 Templates\IRepository.tt
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFRepository", "EFRepositoryBinary\EFRepository\EFRepository.csproj", "{4580BC98-A5C6-4171-A687-ECE04E91A6F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFRepositoryTest", "EFRepositoryBinary\EFRepositoryTest\EFRepositoryTest.csproj", "{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC3ObjectContext_StructureMap", "Samples\MVC3ObjectContext_StructureMap\MVC3ObjectContext_StructureMap\MVC3ObjectContext_StructureMap.csproj", "{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC3ObjectContext_StructureMap.Data", "Samples\MVC3ObjectContext_StructureMap\MVC3ObjectContext_StructureMap.Data\MVC3ObjectContext_StructureMap.Data.csproj", "{4315BB94-16A9-4138-9D9A-63792CD8AC45}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC3ObjectContext_StructureMap.Web", "Samples\MVC3ObjectContext_StructureMap\MVC3ObjectContext_StructureMap.Web\MVC3ObjectContext_StructureMap.Web.csproj", "{704F03E4-D796-419B-B05E-9210D65FF3FB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{02C48735-3777-46CC-893E-06C9316E6275}"
+	ProjectSection(SolutionItems) = preProject
+		EFRepository\EFRepository.nuspec = EFRepository\EFRepository.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,55 +35,8 @@ Global
 		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4580BC98-A5C6-4171-A687-ECE04E91A6F0}.Release|x86.ActiveCfg = Release|Any CPU
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Debug|x86.ActiveCfg = Debug|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Debug|x86.Build.0 = Debug|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Release|Any CPU.ActiveCfg = Release|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Release|Mixed Platforms.Build.0 = Release|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Release|x86.ActiveCfg = Release|x86
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6}.Release|x86.Build.0 = Release|x86
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F}.Release|x86.ActiveCfg = Release|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45}.Release|x86.ActiveCfg = Release|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{704F03E4-D796-419B-B05E-9210D65FF3FB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4580BC98-A5C6-4171-A687-ECE04E91A6F0} = {D3B710B9-167E-4FCC-B58E-C9DA980168AA}
-		{0C2FBE1C-E905-4326-B52D-9DE969D7BFE6} = {D3B710B9-167E-4FCC-B58E-C9DA980168AA}
-		{F06D4F91-ADAD-43F8-AA66-3A68BC11D01F} = {F568F395-8127-4FA1-B93E-9D6B0A8A33EE}
-		{4315BB94-16A9-4138-9D9A-63792CD8AC45} = {F568F395-8127-4FA1-B93E-9D6B0A8A33EE}
-		{704F03E4-D796-419B-B05E-9210D65FF3FB} = {F568F395-8127-4FA1-B93E-9D6B0A8A33EE}
 	EndGlobalSection
 EndGlobal
