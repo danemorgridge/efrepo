@@ -4,9 +4,9 @@ Note: I'm in the process of rewriting the documentation...
 
 ### 1. Installation
 
-Get the EFRepository package from Nuget using the Nuget Manager in Visual Studio or using the Package Manager Console:
+Get the EFRepo package from Nuget using the Nuget Manager in Visual Studio or using the Package Manager Console:
 
-`PM> Install-Package EFRepository`
+`PM> Install-Package EFRepo`
 
 ### 2. Add EF Data Model
 

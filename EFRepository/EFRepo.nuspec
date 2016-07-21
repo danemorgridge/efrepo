@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
 	<metadata>
-		<id>EFRepository</id>
+		<id>EFRepo</id>
 		<version>2.0.0</version>
 		<authors>Dane Morgridge</authors>
 		<owners>Dane Morgridge</owners>
