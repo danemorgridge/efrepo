@@ -1,4 +1,4 @@
-﻿<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ template language="C#" debug="true" hostspecific="true"#>
 <#@ include file="EF.Utility.CS.ttinclude"#>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Diagnostics" #>
@@ -21,8 +21,8 @@ using System.Linq.Expressions;
 using System.Text;
 
 namespace <#= code.VsNamespaceSuggestion() #>
-{ 
-	public interface IRepository<T> 
+{
+	public interface IRepository<T>
 	{
 		IUnitOfWork UnitOfWork { get; set; }
 		IQueryable<T> All();
@@ -46,9 +46,9 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 		#>using System;
 using System.Linq;
 using System.Collections.Generic;
-	
+
 namespace <#= code.VsNamespaceSuggestion() #>
-{   
+{
 	<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#> class <#=code.Escape(entity)#>Repository : EFRepository<<#=code.Escape(entity)#>>, I<#=code.Escape(entity)#>Repository
 	{
 
@@ -110,7 +110,7 @@ namespace <#= code.VsNamespaceSuggestion() #>
 	public class EFRepository<T> : IRepository<T> where T : class
 	{
 		public IUnitOfWork UnitOfWork { get; set; }
-		
+
 		private IDbSet<T> _objectset;
 		private IDbSet<T> ObjectSet
 		{
@@ -163,7 +163,7 @@ namespace <#= code.VsNamespaceSuggestion() #>
 		{
 			Context.SaveChanges();
 		}
-		
+
 		public bool LazyLoadingEnabled
 		{
 			get { return Context.Configuration.LazyLoadingEnabled; }
@@ -175,7 +175,7 @@ namespace <#= code.VsNamespaceSuggestion() #>
 			get { return Context.Configuration.ProxyCreationEnabled; }
 			set { Context.Configuration.ProxyCreationEnabled = value; }
 		}
-		
+
 		public string ConnectionString
 		{
 			get { return Context.Database.Connection.ConnectionString; }
@@ -192,7 +192,7 @@ namespace <#= code.VsNamespaceSuggestion() #>
 		public static IUnitOfWork GetUnitOfWork()
 		{
 			return new EFUnitOfWork();
-		}		
+		}
 		<# foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
 {; #>
 
@@ -208,7 +208,7 @@ namespace <#= code.VsNamespaceSuggestion() #>
 			var repository = new <#=code.Escape(entity)#>Repository();
 			repository.UnitOfWork = unitOfWork;
 			return repository;
-		}		
+		}
 <# } #>
 	}
 }<#	fileManager.Process();
@@ -218,8 +218,8 @@ namespace <#= code.VsNamespaceSuggestion() #>
 <#+
 
 bool DoesFileExist(string filename)
-{			
-	return File.Exists(Path.Combine(GetCurrentDirectory(),filename));	
+{
+	return File.Exists(Path.Combine(GetCurrentDirectory(),filename));
 }
 
 string OutputFile(string filename)
@@ -242,20 +242,20 @@ string GetCurrentDirectory()
 			"the template with debug='False' specified in the <\u0023@ template \u0023> directive.");
 	}
 	else
-	{		
+	{
 		executingDirectoryName = Path.GetDirectoryName(stackTraceFileName);
-	}	
+	}
 	return executingDirectoryName;
 }
 
 string FindEDMXFileName()
 {
 	string edmxFile = "";
-				
+
 	string[] entityFrameworkFiles = Directory.GetFiles(GetCurrentDirectory(), "*.edmx");
 	if(entityFrameworkFiles.Length > 0)
 		edmxFile = entityFrameworkFiles[0];
-	
+
 	return edmxFile;
 }
 #>
